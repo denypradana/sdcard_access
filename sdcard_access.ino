@@ -11,13 +11,13 @@ void setup() {
   }
 
 
-  Serial.print("Initializing SD card...");
+  Serial.print("Inisialisasi Micro SD... ");
 
   if (!SD.begin(4)) {
-    Serial.println("initialization failed!");
+    Serial.println("Inisialisasi gagal !");
     while (1);
   }
-  Serial.println("initialization done.");
+  Serial.println("Inisialisasi sukses");
 
   // open the file. note that only one file can be open at a time,
   // so you have to close this one before opening another.
@@ -25,14 +25,14 @@ void setup() {
 
   // if the file opened okay, write to it:
   if (myFile) {
-    Serial.print("Writing to test.txt...");
+    Serial.print("Menulis data ke test.txt...");
     myFile.println("testing 1, 2, 3.");
     // close the file:
     myFile.close();
-    Serial.println("done.");
+    Serial.println("Selesai.");
   } else {
     // if the file didn't open, print an error:
-    Serial.println("error opening test.txt");
+    Serial.println("Gagal membuka test.txt");
   }
 
   // re-open the file for reading:
@@ -48,7 +48,7 @@ void setup() {
     myFile.close();
   } else {
     // if the file didn't open, print an error:
-    Serial.println("error opening test.txt");
+    Serial.println("Gagal membuka test.txt");
   }
 }
 
