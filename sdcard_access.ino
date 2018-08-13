@@ -4,10 +4,10 @@
 File myFile;
 
 void setup() {
-  // Open serial communications and wait for port to open:
+  // Membuka komunikasi serial dan menunggu port terbuka:
   Serial.begin(9600);
   while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+    ; // menunggu serial port tersambung. Diperlukan hanya untuk Native USB Port
   }
 
 
@@ -19,39 +19,39 @@ void setup() {
   }
   Serial.println("Inisialisasi sukses");
 
-  // open the file. note that only one file can be open at a time,
-  // so you have to close this one before opening another.
+  // membuka file. Catat bahwa hanya satu file yang bisa dibuka pada satu waktu,
+  // jadi anda harus menutip file ini dulu sebelum membuka yang lain.
   myFile = SD.open("test.txt", FILE_WRITE);
 
-  // if the file opened okay, write to it:
+  // jika file terbuka dengan baik, tulis data kedalamnya:
   if (myFile) {
     Serial.print("Menulis data ke test.txt...");
     myFile.println("testing 1, 2, 3.");
-    // close the file:
+    // tutup file:
     myFile.close();
     Serial.println("Selesai.");
   } else {
-    // if the file didn't open, print an error:
+    // jika file tidak terbuka, tampilkan error:
     Serial.println("Gagal membuka test.txt");
   }
 
-  // re-open the file for reading:
+  // buka kembali filenya untuk pembacaan:
   myFile = SD.open("test.txt");
   if (myFile) {
     Serial.println("test.txt:");
 
-    // read from the file until there's nothing else in it:
+    // baca data dari file sampai tidak ada lagi yang data bisa dibaca:
     while (myFile.available()) {
       Serial.write(myFile.read());
     }
-    // close the file:
+    // tutup file:
     myFile.close();
   } else {
-    // if the file didn't open, print an error:
+    // jika file tidak terbuka, tampilkan error:
     Serial.println("Gagal membuka test.txt");
   }
 }
 
 void loop() {
-  // nothing happens after setup
+  // tidak ada apa-apa disini
 }
